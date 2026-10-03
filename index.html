@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06162e">
+    <title>WeatherApp | Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+
+        <aside class="sidebar">
+            <a class="brand" href="#" aria-label="WeatherApp home">
+                <span class="brand-icon">🌤️</span>
+                <span>Weather<span class="accent">App</span></span>
+            </a>
+
+            <nav class="navigation">
+                <button class="nav-link active" type="button" data-view="home">
+                    <span>⌂</span> Home
+                </button>
+                <button class="nav-link" type="button" data-view="search">
+                    <span>⌕</span> Search
+                </button>
+                <button class="nav-link" type="button" data-view="favorites">
+                    <span>☆</span> Favorites
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <span class="live-dot"></span>
+                <span>Weather updates</span>
+                <p>Better weather,<br>better days ♡</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="topbar">
+                <form id="weather-form" class="search-form">
+                    <span class="search-icon">⌕</span>
+                    <input
+                        id="city-input"
+                        type="search"
+                        placeholder="Search for a city..."
+                        aria-label="Search city"
+                        autocomplete="off"
+                        required
+                    >
+                    <button type="submit" id="search-button">Search</button>
+                </form>
+
+                <div class="unit-toggle" aria-label="Temperature unit">
+                    <button type="button" class="unit-button active"
+                        data-unit="metric">°C</button>
+                    <button type="button" class="unit-button"
+                        data-unit="imperial">°F</button>
+                </div>
+            </header>
+
+            <div id="status-message" class="status-message"
+                role="status" aria-live="polite">
+                Search for a city to see its weather.
+            </div>
+
+            <section class="dashboard-grid">
+
+                <article class="current-card panel">
+                    <div class="current-background"></div>
+
+                    <div class="current-top">
+                        <div>
+                            <p class="eyebrow">CURRENT WEATHER</p>
+                            <h1 id="city-name">Search for a city</h1>
+                            <p id="location-label" class="muted">
+                                Your weather, at a glance
+                            </p>
+                        </div>
+                        <button id="favorite-button" class="favorite-button"
+                            type="button" aria-label="Add city to favorites"
+                            title="Add to favorites">☆</button>
+                    </div>
+
+                    <p id="current-date" class="current-date">--</p>
+
+                    <div class="current-weather">
+                        <img id="current-icon" class="main-weather-icon"
+                            src="https://openweathermap.org/img/wn/02d@2x.png"
+                            alt="Weather icon">
+                        <div>
+                            <p id="temperature" class="temperature">--°</p>
+                            <p id="description" class="description">
+                                Waiting for weather data
+                            </p>
+                            <p id="feels-like" class="muted">Feels like --°</p>
+                        </div>
+                    </div>
+
+                    <div class="current-footer">
+                        <span>☀ <span id="sunrise">Sunrise --</span></span>
+                        <span>☾ <span id="sunset">Sunset --</span></span>
+                    </div>
+                </article>
+
+                <article class="panel details-panel">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">WEATHER DETAILS</p>
+                            <h2>Today's conditions</h2>
+                        </div>
+                        <span class="heading-icon">✧</span>
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-icon">💧</span>
+                            <p>Humidity</p>
+                            <strong id="humidity">--</strong>
+                            <small>Relative humidity</small>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">🌬️</span>
+                            <p>Wind speed</p>
+                            <strong id="wind">--</strong>
+                            <small id="wind-unit">Current wind</small>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">◉</span>
+                            <p>Pressure</p>
+                            <strong id="pressure">--</strong>
+                            <small>Atmospheric pressure</small>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-icon">◎</span>
+                            <p>Visibility</p>
+                            <strong id="visibility">--</strong>
+                            <small>Viewing distance</small>
+                        </div>
+                    </div>
+                </article>
+
+            </section>
+
+            <section class="panel forecast-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">PLAN YOUR DAY</p>
+                        <h2>Hourly forecast</h2>
+                    </div>
+                    <span class="muted small">Next available hours</span>
+                </div>
+
+                <div id="hourly-forecast" class="hourly-list">
+                    <p class="empty-state">Search for a city to load the forecast.</p>
+                </div>
+            </section>
+
+            <section class="panel forecast-panel">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">PLAN AHEAD</p>
+                        <h2>7-day forecast</h2>
+                    </div>
+                    <span id="forecast-source" class="muted small">
+                        Live forecast data
+                    </span>
+                </div>
+
+                <div id="daily-forecast" class="daily-list">
+                    <p class="empty-state">Daily forecast will appear here.</p>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <span>WeatherApp</span>
+                <span>Weather data provided by OpenWeather</span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
